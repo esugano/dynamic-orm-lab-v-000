@@ -8,7 +8,7 @@ class InteractiveRecord
     self.to_s.downcase.pluralize
   end
 
-  def self.column_names
+  def self.class.column_names
     #return hash instead of a nested array
     DB[:conn].execute.results_as_hash = true
     #grabs table info
@@ -20,7 +20,7 @@ class InteractiveRecord
     table_info.each do |row|
       column_names << row["name"]
     end
-    #remove any columns that = nil 
+    #remove any columns that = nil
     column_names.compact
   end
 end
