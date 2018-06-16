@@ -10,7 +10,7 @@ class InteractiveRecord
 
   def self.column_names
     #return hash instead of a nested array
-    DB[:conn].execute.results_as_hash = true
+    DB[:conn].results_as_hash = true
     #grabs table info
     sql = "pragma table_info('#{table_name}')"
     table_info = DB[:conn].execute(sql)
