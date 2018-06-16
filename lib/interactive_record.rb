@@ -8,7 +8,7 @@ class InteractiveRecord
     self.to_s.downcase.pluralize
   end
 
-  def self.class.column_names
+  def self.column_names
     #return hash instead of a nested array
     DB[:conn].execute.results_as_hash = true
     #grabs table info
