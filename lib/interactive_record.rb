@@ -24,13 +24,29 @@ class InteractiveRecord
     column_names.compact
   end
 
+  #creates attr_accessor based on column names
   self.column_names.each do |col_name|
       attr_accessor col_name.to_sym
   end
 
+  #iterate over the options hash to send and create 
+  #the hash key (interpolate the column name) and its value
   def initialize(options={})
     options.each do |property,value|
       self.send("#{property}=",value)
     end
+  end
+
+  def column_names_for_insert
+    #removes id from the array returned from the method above
+    self.class.column_names.delete_if {|col| col == "id"}.join(",")
+  end 
+
+  def values_for_insert
+    values = []
+    self.class.column_names.each do |col_name|
+      values << "'#{send(col_name)}'" unless send(col_name).nil?
+    end
+    values.join(",")
   end
 end
