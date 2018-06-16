@@ -24,11 +24,6 @@ class InteractiveRecord
     column_names.compact
   end
 
-  #creates attr_accessor based on column names
-  self.column_names.each do |col_name|
-      attr_accessor col_name.to_sym
-  end
-
   #iterate over the options hash to send and create
   #the hash key (interpolate the column name) and its value
   def initialize(options={})
