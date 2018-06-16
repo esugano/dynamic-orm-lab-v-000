@@ -38,7 +38,7 @@ class InteractiveRecord
 
   def col_names_for_insert
     #removes id from the array returned from the method above
-    self.class.column_names.delete_if {|col| col == "id"}.join(" ,")
+    self.class.column_names.delete_if {|col| col == "id"}.join(", ")
   end
 
   def values_for_insert
