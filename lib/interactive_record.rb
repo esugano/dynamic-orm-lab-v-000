@@ -36,7 +36,7 @@ class InteractiveRecord
     self.class.table_name
   end
 
-  def column_names_for_insert
+  def col_names_for_insert
     #removes id from the array returned from the method above
     self.class.column_names.delete_if {|col| col == "id"}.join(",")
   end
